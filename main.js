@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return neighbours;
   };
 
-  const cellLeftClicked = (i) => {
+  const cellLeftClicked = (i, recursed = false) => {
     if (!gameState) return;
     const { cell, mine, count } = cells[i];
     if (cell.classList.contains('number') || cell.classList.contains('flagged'))
@@ -140,10 +140,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const { row, col } = indexToPosition(i);
       const neighbors = getNeighbourIndices(row, col);
-      neighbors.forEach((index) => cellLeftClicked(index));
+      neighbors.forEach((index) => cellLeftClicked(index, true));
     }
 
-    if (timer.innerText === '0') {
+    if (timer.innerText === '0' && !recursed) {
       timerInterval = setInterval(
         () => (timer.innerText = parseInt(timer.innerText) + 1),
         1000,
