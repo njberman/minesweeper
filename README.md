@@ -1,0 +1,3 @@
+# minesweeper
+
+-- not yoursweeper
