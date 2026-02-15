@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cellsRevealed++;
     if (CELL_COUNT - cellsRevealed === MINES) {
       gameState = false;
-      console.log('You won!');
+      clearInterval(timerInterval);
     }
   };
 
