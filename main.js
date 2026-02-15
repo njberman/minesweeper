@@ -88,8 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
     return row * COLS + col;
   };
 
-  const getNeighborIndices = (row, col) => {
-    const neighbors = [];
+  const getNeighbourIndices = (row, col) => {
+    const neighbours = [];
     const deltas = [
       [-1, -1],
       [-1, 0],
@@ -105,10 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const newRow = row + dRow;
       const newCol = col + dCol;
       if (newRow >= 0 && newRow < ROWS && newCol >= 0 && newCol < COLS) {
-        neighbors.push(positionToIndex(newRow, newCol));
+        neighbours.push(positionToIndex(newRow, newCol));
       }
     }
-    return neighbors;
+    return neighbours;
   };
 
   const cellLeftClicked = (i) => {
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cell.classList.add('number');
 
       const { row, col } = indexToPosition(i);
-      const neighbors = getNeighborIndices(row, col);
+      const neighbors = getNeighbourIndices(row, col);
       neighbors.forEach((index) => cellLeftClicked(index));
     }
 
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (cells[i].mine) continue;
 
       const { row, col } = indexToPosition(i);
-      const neighbors = getNeighborIndices(row, col);
+      const neighbors = getNeighbourIndices(row, col);
 
       let count = 0;
       for (const index of neighbors) {
